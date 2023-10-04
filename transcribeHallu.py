@@ -98,8 +98,10 @@ def loadModel(gpu: str,modelSize=None):
         if whisperFound == "FSTR":
             if(modelSize == "large"):
                 modelPath = "whisper-large-ct2/"
-            else:
+            elif(modelSize == "medium"):
                 modelPath = "whisper-medium-ct2/"
+            else:
+                modelPath = "whisper-small-ct2/"
             print("LOADING: "+modelPath+" GPU: "+gpu+" BS: "+str(beam_size))
             compute_type="float16"# float16 int8_float16 int8
             model = WhisperModel(modelPath, device=device,device_index=int(gpu), compute_type=compute_type)
